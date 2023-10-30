@@ -1,5 +1,16 @@
   <h1>My HeaderWorks</h1>
 
-<ea-rooms></ea-rooms>
+<div [ngSwitch]="role"> 
+  <div *ngSwitchCase = "'admin'">
+  
+    <ea-rooms></ea-rooms>
+  </div>
+  <div *ngSwitchCase="'User'"> 
+    <p>user logged in</p>
+</div>
+<div *ngSwitchDefault>
+  <p>Guest</p>
+</div>
+
 <ea-class></ea-class>
 

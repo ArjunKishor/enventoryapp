@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Room } from './room';
+import { Component, Input, OnInit } from '@angular/core';
+import { Room, RoomsList } from './room';
 
 @Component({
   selector: 'ea-rooms',
@@ -12,10 +12,11 @@ export class RoomsComponent implements OnInit {
   numRooms = 10;  
   addRooms() {
     this.numRooms++;
+    this.rooms.availableRooms++;
   }
   rooms : Room = {
     totalRooms: 1,
-    // availableRooms: 10,
+    availableRooms: 5,
     bookedRooms: 100
   };
   
@@ -25,11 +26,17 @@ export class RoomsComponent implements OnInit {
   }
 
   deleteRooms() {
-    // this.rooms.availableRooms--;
+    this.numRooms--;
+    this.rooms.availableRooms--;
   }
+
+  
+
+  
   constructor() { 
 
     }
+    @Input() rooList: RoomsList[] = [];
     ngOnInit() {
       console.log('RoomsComponent');
     }
