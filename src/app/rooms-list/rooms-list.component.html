@@ -1,4 +1,4 @@
-<p>rooms-list works!</p>
+<h1 >{{title}}</h1>
 <table class="table">
     <tr>
         <th>Is Even </th>
@@ -9,13 +9,14 @@
         <th>Check In Time</th>
         <th>Check Out Time</th>
         <th>Rating</th>
+        <th>Select Room</th>
     </tr>
     <!-- Modify DOM Elements are structual directives they add or remove Dom elements -->
     <!-- are elemets they cant add or remove Dom elements -->
     <tr 
     [ngClass]="e ?'even' :'odd'"
     
-    *ngFor="let n of roosList ; let e = even;let i=index" >
+    *ngFor="let n of rooms ; let e = even;let i=index" >
         <td>{{e  ? "Even " : "odd"}}</td>
         <td>{{i/100 | percent}}</td>
         <td>{{n.amenities | uppercase}}</td>
@@ -24,5 +25,10 @@
         <td>{{n.checkIn | date : 'shortDate'}}</td>
         <td>{{n.checkOut}}</td>
         <td>{{n.rating | number : '1.1-1'}}</td>
+        <td>
+            <button (click)="selectRoom(n)">Select
+
+            </button>
+        </td>
     </tr>
 </table>

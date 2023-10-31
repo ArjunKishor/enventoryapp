@@ -1,42 +1,30 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { RoomsList } from '../rooms/room';
 
 @Component({
   selector: 'ea-rooms-list',
   templateUrl: './rooms-list.component.html',
-  styleUrls: ['./rooms-list.component.scss']
+  styleUrls: ['./rooms-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RoomsListComponent {
-  roosList: RoomsList[] = [  {
-    amenities: 'Free Wifi',
-    checkIn: new Date('2019-01-16'),
-    checkOut: new Date('2019-01-18'),
-    image:  "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    price: 100,
-    roomsType: 'Single',
-    rating: 3 ,
+// Dont use onChange and doCheck together
+// onChanges is only callled when it detects changes in the @Input() properties
+export class RoomsListComponent implements OnInit,OnChanges{
+  ngOnInit(): void {
+  }
+constructor() { }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("changes in the Onchange Method");
+    console.log(changes);
+  }
+@Input() rooms: RoomsList[] = [];   
 
-  },
-    {
-    amenities: 'Free Wifi',
-    checkIn: new Date('2019-01-16'),
-    checkOut: new Date('2019-01-18'),
-    image:  "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    price: 100,
-    roomsType: 'Single',
-    rating: 2.92889 ,
+@Input() title : string= '';
 
-  },
-   {
-    amenities: 'Free Wifi',
-    checkIn: new Date('2019-01-16'),
-    checkOut: new Date('2019-01-18'),
-    image:  "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    price: 100,
-    roomsType: 'Single',
-    rating: 4.099090990 ,
-  },
+// @Output() roomSelected : RoomsList = new EventEmitter<RoomsList>();
+@Output() roomSelected  =  new EventEmitter<RoomsList>();
 
-   
-];
+selectRoom(room: RoomsList) {
+  this.roomSelected.emit(room);
+  console.log("room selected");}
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,7 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { RouterModule } from '@angular/router';
 import { ClassComponent } from './class/class.component';
 import { RoomsListComponent } from './rooms-list/rooms-list.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { RoomsListComponent } from './rooms-list/rooms-list.component';
     RoomsComponent,
     ClassComponent,
     RoomsListComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,4 +26,6 @@ import { RoomsListComponent } from './rooms-list/rooms-list.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule{
+
+ }
