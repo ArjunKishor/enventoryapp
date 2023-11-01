@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { RoomsList } from '../rooms/room';
 
 @Component({
@@ -9,10 +9,13 @@ import { RoomsList } from '../rooms/room';
 })
 // Dont use onChange and doCheck together
 // onChanges is only callled when it detects changes in the @Input() properties
-export class RoomsListComponent implements OnInit,OnChanges{
+export class RoomsListComponent implements OnInit,OnChanges, OnDestroy{
   ngOnInit(): void {
   }
 constructor() { }
+  ngOnDestroy(): void {
+    console.log("ngOnDestroy");
+  }
   ngOnChanges(changes: SimpleChanges): void {
     console.log("changes in the Onchange Method");
     console.log(changes);

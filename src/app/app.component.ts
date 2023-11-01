@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { RoomsComponent } from './rooms/rooms.component';
+import { LocalStorageToken } from './localstorage.token';
 
 @Component({
   selector: 'ea-root',
@@ -21,6 +22,11 @@ export class AppComponent implements  OnInit {
   @ViewChild( 'name',{static:true}) name!: ElementRef;
 
   ngOnInit(){
-    this.name.nativeElement.value = 'Rajeshjdhsadhfgsahdghsagfg';
+
+    this.name.nativeElement.innertext = 'Rajeshjdhsadhfgsahdghsagfg';
+    this.localStorge.setItem('name','Rajesh');
   }
+
+  constructor(  
+  @Inject(LocalStorageToken) private localStorge: Storage) { }
 }

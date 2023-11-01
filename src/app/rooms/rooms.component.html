@@ -1,16 +1,22 @@
 <section>hello</section>
 
-<h1>rooms works!{{hotelName}}</h1>
+<h1>rooms works</h1>
 Number of rooms: {{numRooms}}
 <div [innerText]="numRooms">
 
 </div>
 <div [hidden] = "hideHotel">
-    <p>Hotel Name: {{hotelName}}</p>
+    <p>Hotel Name: </p>
+    <h1>Helolo</h1>
+    <h6>Hello 6</h6>
 </div>
 
 <button (click)="addRooms()">Add Room</button>
 <button (click)="hideHotelName()">toggle</button>
+<br>
+<button (click)="editRooms()">Edit Selected Room</button>
+<br>
+<button (click)="deleteRooms1()">Delete Selected Room</button>
 
 
 <div *ngIf="rooms?.availableRooms">Rooms List</div>
@@ -19,9 +25,13 @@ Number of rooms: {{numRooms}}
 <!-- {{roosList | json}} -->
 <button (click)="deleteRooms()">deleteRooms</button>
 <div *ngIf="selectRoomVar">{{selectRoomVar | json}}</div>
+<div *ngIf="hideHotel">
+
+
 <ea-rooms-list 
 [title]= "title"
-[rooms]="roomsList" (roomSelected)="selectedRoom($event)"></ea-rooms-list>
+[rooms]="rooList" (roomSelected)="selectedRoom($event)"></ea-rooms-list>
     <div>
         <Button  (click)="addRoomsObject()">Click to add An object</Button>
     </div>
+</div>

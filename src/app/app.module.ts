@@ -8,6 +8,18 @@ import { RouterModule } from '@angular/router';
 import { ClassComponent } from './class/class.component';
 import { RoomsListComponent } from './rooms-list/rooms-list.component';
 import { HeaderComponent } from './header/header.component';
+import { ContainerComponent } from './container/container.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { APP_CONFIG, APP_SERVICE_CONFIG } from './app_config/appconfig_service';
+import{HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppNavComponent } from './app-nav/app-nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -16,15 +28,30 @@ import { HeaderComponent } from './header/header.component';
     ClassComponent,
     RoomsListComponent,
     HeaderComponent,
+    ContainerComponent,
+    EmployeeComponent,
+    AppNavComponent,
+    NotFoundComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{
+    provide: APP_SERVICE_CONFIG,
+    useValue: APP_CONFIG
+  }],
+  bootstrap: [AppComponent] 
 })
 export class AppModule{
 
