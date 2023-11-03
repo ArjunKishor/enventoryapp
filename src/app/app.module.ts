@@ -20,6 +20,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { RoomAddComponent } from './room-add/room-add.component';
+import { RoomBookingComponent } from './room-booking/room-booking.component';
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { HoverDirective } from './hover.directive';
 
 @NgModule({
   declarations: [
@@ -32,11 +37,16 @@ import { NotFoundComponent } from './not-found/not-found.component';
     EmployeeComponent,
     AppNavComponent,
     NotFoundComponent,
+    RoomAddComponent,
+    RoomBookingComponent,
+    LoginComponent,
+    HoverDirective,
+    
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+   
     RouterModule,
     AlertModule.forRoot(),
     HttpClientModule,
@@ -45,7 +55,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    FormsModule,
+    AppRoutingModule,
   ],
   providers: [{
     provide: APP_SERVICE_CONFIG,
