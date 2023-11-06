@@ -10,8 +10,11 @@ Number of rooms: {{numRooms}}
     <h1>Helolo</h1>
     <h6>Hello 6</h6>
 </div>
+<router-outlet></router-outlet>
+
 
 <button (click)="addRooms()">Add Room</button>
+<button routerLink="add">GO TO ADD ROOM BRAH</button>
 <button (click)="hideHotelName()">toggle</button>
 <br>
 <button (click)="editRooms()">Edit Selected Room</button>
@@ -35,3 +38,4 @@ Number of rooms: {{numRooms}}
         <Button  (click)="addRoomsObject()">Click to add An object</Button>
     </div>
 </div>
+<router-outlet></router-outlet>

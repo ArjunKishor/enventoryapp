@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from './sevice/login.service';
 
 @Component({
   selector: 'ea-login',
@@ -11,19 +12,17 @@ user : string = '';
 email : string = '';
 password : string = '';
 login() {
-  if(this.email == 'shaheer@gmail.com' && this.password == 'shaheer'){
+  if(this.loginService.Login(this.email,this.password)){
     this.user = 'shaheer';
-    alert('Login Successful');
+    alert('Login Successful `this.user`');
+    this.route.navigate(['/rooms']); 
 
-  }
-  else if(this.email == 'hassan@gmail.com' && this.password == 'hassan'){
-    this.user = 'hassan';
-    alert('Login Successful');
-    this.route.navigate(['/rooms', 'add']);
   }else{
     alert('Invalid Credentials');
   }
 }
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private loginService:LoginService) {
+
+   }
 }

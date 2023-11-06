@@ -1,6 +1,9 @@
 import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { RoomsComponent } from './rooms/rooms.component';
 import { LocalStorageToken } from './localstorage.token';
+import { ConfigService } from './config/config.service';
+import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'ea-root',
@@ -14,6 +17,22 @@ export class AppComponent implements  OnInit {
   role = 'admin';
 
   ngAfterViewInit(): void {
+// this.router.events.subscribe((data)=>{
+//   console.log(data);
+// });
+this.router.events.pipe(
+  filter((data)=> data instanceof NavigationStart)
+).subscribe((event)=>{
+  console.log(event);
+  console.log("Navigation Start");
+});
+this.router.events.pipe(
+  filter((data)=> data instanceof NavigationEnd)
+).subscribe((event)=>{
+  console.log(event);
+  console.log("Navigation End");
+});
+
     const comRef = this.vcr.createComponent(RoomsComponent);
     comRef.instance.title = 'Rooms List In app Component using ViewContainerRef';
   }
@@ -28,5 +47,8 @@ export class AppComponent implements  OnInit {
   }
 
   constructor(  
-  @Inject(LocalStorageToken) private localStorge: Storage) { }
+  @Inject(LocalStorageToken) private localStorge: Storage,
+  private configService:ConfigService,
+  private router:Router,
+  ) { }
 }
