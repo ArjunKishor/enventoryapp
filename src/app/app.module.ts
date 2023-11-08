@@ -1,4 +1,4 @@
-import { NgModule, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { ErrorHandler, NgModule, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,8 @@ import { LoginComponent } from './login/login.component';
 import { HoverDirective } from './hover.directive';
 import { RoomsModule } from './rooms/rooms/rooms.module';
 import { RouteConfigToken } from './config/routeConfig.service';
+import { FilterPipe } from './rooms/service/filter.pipe';
+import { GlobalErrorHandlerService } from './errorhandler.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { RouteConfigToken } from './config/routeConfig.service';
     
     LoginComponent,
     HoverDirective,
+    FilterPipe,
     
 
   ],
@@ -57,11 +60,15 @@ import { RouteConfigToken } from './config/routeConfig.service';
   providers: [{
     provide: APP_SERVICE_CONFIG,
     useValue: APP_CONFIG, 
+    
 
-  }, {
+  },
+  {
     provide: RouteConfigToken,
     useValue: {title: 'Home'},
-  }],
+  },
+  {provide:ErrorHandler,useClass:GlobalErrorHandlerService},
+],
   bootstrap: [AppComponent] 
 })
 export class AppModule{

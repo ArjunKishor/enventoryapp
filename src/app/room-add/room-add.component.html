@@ -15,6 +15,7 @@ pristine:{{roomForms.pristine | json}}
         type="text" 
         placeholder="Room Number" 
         [(ngModel)]="rooms.roomNumber"
+        [ngModelOptions]="{updateOn:'blur'}"
         
         
         >

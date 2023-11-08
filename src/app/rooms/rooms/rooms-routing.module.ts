@@ -8,7 +8,7 @@ const routes: Routes = [
   
   { path: '', component: RoomsComponent ,children:[
     { path: 'add', component: RoomAddComponent },
-{ path: ':roomId', component: RoomBookingComponent },
+// { path: ':roomId', component: RoomBookingComponent },
   ]},
   
   ];
