@@ -116,3 +116,5 @@ Submit
         </button>
     </div>
 </form>
+
+<app-table [data]="data ?? []" [columns]="columns" (onRowTap)="onTap($event)"></app-table>

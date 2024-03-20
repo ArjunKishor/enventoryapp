@@ -1,0 +1,22 @@
+<table class="common-table table-auto table text-dark w-full mt-5 border-separate border-spacing-y-2">
+    <thead>
+        <tr class="bg-[#E7EBED85]">
+            <th class="relative border-none border-0 py-3" *ngFor="let column of columns; let i = index">
+                {{column | keyToTitleCase}}
+                <span  class="absolute right-0 h-5 bg-dark-shade rounded w-0.5"></span>
+            </th>
+        </tr>
+    </thead>
+        <tbody>
+            <tr>
+            <td class="h-1 hidden"></td>
+            </tr>
+        </tbody>
+    <tbody>
+        <tr class="bg-white cursor-pointer" *ngFor="let row of data; let i = index" (click)="onRowTapHandler(row)">
+            <td class="relative py-3" *ngFor="let column of columns; let j = index" [innerHtml]="row[column]">
+                <span  class="absolute right-0 h-5 bg-dark-shade rounded w-0.5"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -9,26 +9,27 @@ import { RoomsListComponent } from 'src/app/rooms-list/rooms-list.component';
 import { RoomsComponent } from '../rooms.component';
 import { FormsModule } from '@angular/forms';
 import { RouteConfigToken } from 'src/app/config/routeConfig.service';
+import { TableComponent } from "../../table/table.component";
 
 
 @NgModule({
-  declarations: [
-    
-    RoomsComponent,
-    RoomsListComponent,
-    RoomAddComponent,
-    RoomBookingComponent,
-    EmployeeComponent,
-  ],
-  imports: [
-    CommonModule,
-    RoomsRoutingModule,
-    FormsModule
-  ],
-  providers: [
-    {provide:RouteConfigToken,
-    useValue:{title:'Rooms'}}
-  ]
+    declarations: [
+        RoomsComponent,
+        RoomsListComponent,
+        RoomAddComponent,
+        RoomBookingComponent,
+        EmployeeComponent,
+    ],
+    providers: [
+        { provide: RouteConfigToken,
+            useValue: { title: 'Rooms' } }
+    ],
+    imports: [
+        CommonModule,
+        RoomsRoutingModule,
+        FormsModule,
+        TableComponent
+    ]
 })
 export class RoomsModule {
   constructor(){
